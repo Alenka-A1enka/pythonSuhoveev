@@ -1,0 +1,13 @@
+import math
+while True:
+    print('Введите значение х')
+    x = float(input())
+    if x <= -3:
+        print('y = 3')
+    if x > -3 and x <= 3:
+        y = 3 - math.sqrt(9 - x * x)
+        print('y = ', round(y, 3))
+    if x > 3 and x <= 6:
+        print('y = ', round((- 2 * x + 9), 3))
+    if x > 6:
+        print('y = ', x - 9)
