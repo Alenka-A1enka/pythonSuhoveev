@@ -1,0 +1,18 @@
+import math
+print('Укажите начало интервала (целое число): ')
+a = int(input())
+print('Укажите конец интервала (целое число): ')
+b = int(input())
+for x in range(a, b + 1):
+    for i in range(2):
+        if i == 1:
+            x = x + 0.5
+        if x <= -3:
+            print('x = ', x, '; y = 3')
+        if x > -3 and x <= 3:
+            y = 3 - math.sqrt(9 - x * x)
+            print('x = ', x, '; y = ', round(y, 3))
+        if x > 3 and x <= 6:
+            print('x = ', x, '; y = ', round((- 2 * x + 9), 3))
+        if x > 6:
+            print('x = ', x, '; y = ', x - 9)
