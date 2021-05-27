@@ -1,0 +1,26 @@
+def recurs(mass, n):
+    i = int(n - 1)
+    #если элемент равен 0 и индекс не выходит за пределы массива отнимаем от индекса 1
+    while mass[i] == 0 and i > 0:
+        i -= 1
+    #дно рекурсии
+    if i == 0:
+        #если последний элемент ненулевой
+        if mass[0] != 0:
+            return mass[0]
+        #если последний элемент нулевой
+        else : 
+            return 1
+    else :
+        return mass[i] * recurs(mass, i)
+    
+
+import random
+print('Введите элементы массива через пробел: ')
+mass_str = input().split(' ') #читаем элементы в массив с типом данных string
+#создаем новый массив с типом данных int
+mass = [i for i in range(len(mass_str))]
+for i in range(len(mass)):
+    mass[i] = int(mass_str[i]) #перевод данных
+s = recurs(mass, len(mass))
+print("Произведение ненулевых элементов: ", s)
