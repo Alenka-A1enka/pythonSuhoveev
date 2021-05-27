@@ -1,0 +1,79 @@
+def printRestangle(d1, d2):
+    #вывод прямоугольника
+    #вывод шапки
+    for i in range(0, d2[0] + 1):
+        if i >= d1[0] and i < d2[0]:
+            print('___', end = '')
+        else:
+            print('   ', end = '')
+    print()
+    #вывод боковых сторон
+    for i in range(d1[1], d2[1] - 1):
+        for i in range(0, d1[0]):
+            print('   ', end = '')
+        print('|', end = '')
+        for i in range(d1[0], d2[0]):
+            print('   ', end = '')
+        print('|')
+    #вывод низа прямоугольника
+    for i in range(0, d2[0] + 1):
+        if i == d1[0]:
+            print('|', end = '')
+        if i == d2[0]:
+            print('|', end = '')
+        if i >= d1[0] and i < d2[0]:
+            print('___', end = '')
+        else:
+            print('   ', end = '')
+    print()
+    #добавляем промежуток после прямоугольника
+    for i in range(d1[1], 0, -1):
+        print()
+
+def remove(d1, d2):
+    print('Введите координату х, на которую переместиться прямоугольник')
+    x = int(input())
+    print('Введите координату y, на которую переместиться прямоугольник')
+    y = int(input())
+    #меняем координаты прямоугольника
+    d1[0] += x
+    d1[1] += y
+    d2[0] += x
+    d2[1] += y
+    printRestangle(d1, d2)
+
+def resize(d1, d2):
+   print('Введите величину, на которую увеличится прямоугольник по оси х')
+   x = int(input())
+   print('Введите величину, на которую увеличится прямоугольник по оси у')
+   y = int(input())
+   #меняем координаты
+   d2[0]+= x
+   d2[1] += y
+   printRestangle(d1, d2)
+
+while True:
+    print('Введите координату левого нижнего угла прямоугольника в виде: a b')
+    coord1 = input().split(' ')
+    print('Введите координату правого верхнего угла прямоугольника в виде: a b')
+    coord2 = input().split(' ')
+
+    #переписываем данные точек в массив типа int
+    d1 = [0, 0]
+    d2 = [0, 0]
+    for i in range(2):
+        d1[i] = int(coord1[i])
+        d2[i] = int(coord2[i])
+    printRestangle(d1, d2)
+    print('Чтобы переместить прямоугольник нажмите 1, чтобы изменить размеры нажмите 2')
+    index = int(input())
+    #перемещение
+    if(index == 1):
+        remove(d1, d2)
+    #изменение размеров
+    if(index == 2):
+        resize(d1, d2)
+
+
+
+
